@@ -1,5 +1,12 @@
 name: Reusable Workflow Demo
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: "The name of de deployable artifact files"
+        required: true
+        # default: "dist-files"
+        type: string
 jobs:
   deploy:
     runs-on: ubuntu-24.04
@@ -8,3 +15,12 @@ jobs:
         run: |
           echo "Deploying to production"
           echo ".... deploying"
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{inputs.artifact-name}}
+      - name: Deploy the code
+        run: |
+          echo "Deploying the code"
+      - name: Listing files
+        run: ls -la
