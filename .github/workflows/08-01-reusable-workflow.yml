@@ -10,7 +10,7 @@ on:
     outputs:
       result:
         description: "The result of the  reusable deploy operation"
-        value: ${{jobs.deploy.outputs.result}}
+        value: ${{jobs.deploy.outputs.outcome}}
     secrets:
       token:
         required: true
