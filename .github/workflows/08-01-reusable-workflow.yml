@@ -26,6 +26,6 @@ jobs:
         run: |
           echo "Deploying the code"
           echo "artifact-name: ${{inputs.artifact-name}}"
-          echo "secret token: ${{secrets.token}}"
+          echo "secret token: ${{secrets.TOKEN}}"
       - name: Listing files
         run: ls -la
