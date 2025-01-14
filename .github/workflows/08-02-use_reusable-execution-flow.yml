@@ -71,6 +71,8 @@ jobs:
     uses: ./.github/workflows/08-01-reusable-workflow.yml
     with:
       artifact-name: dist-files
+    secrets:
+      token: ${{secrets.token}}
   report:
     needs: [deploy, lint]
     if: failure()
