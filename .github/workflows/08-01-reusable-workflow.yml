@@ -7,11 +7,17 @@ on:
         required: true
         # default: "dist-files"
         type: string
+    outputs:
+      result:
+        description: "The result of the  reusable deploy operation"
+        value: ${{jobs.deploy.outputs.result}}
     secrets:
       token:
         required: true
 jobs:
   deploy:
+    outputs:
+      outcome: ${{steps.set-result.outputs.step-result}}
     runs-on: ubuntu-24.04
     steps:
       - name: Output information
@@ -29,3 +35,6 @@ jobs:
           echo "secret token: ${{secrets.TOKEN}}"
       - name: Listing files
         run: ls -la
+      - name: Set result Output
+        id: set-result
+        run: echo "::set-output name=step-result::success"
