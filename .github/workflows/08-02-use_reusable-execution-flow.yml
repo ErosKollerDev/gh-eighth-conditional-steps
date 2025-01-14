@@ -72,7 +72,7 @@ jobs:
     with:
       artifact-name: dist-files
     secrets:
-      token: cool_token
+      token: ${{ secrets.TOKEN}}
   report:
     needs: [deploy, lint]
     if: failure()
