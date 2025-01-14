@@ -2,7 +2,7 @@ name: Matrix Demo
 on:
   push:
     branches:
-      - main
+      - dev-never-runs
 jobs:
   build:
     continue-on-error: true
